@@ -6,16 +6,20 @@ import { playerContext } from './context/playerContext'
 
 export const App: React.FC = () => {
 
-  const {audioRef, track} = useContext(playerContext);
+  const {audioRef, track, songsData} = useContext(playerContext);
 
   return (
     <div className='h-screen bg-black'>
+      { songsData.length !== 0 ? 
+      <>
       <div className='h-[90%] flex'>
         <SideBar /> 
         <Display />
       </div>
       <Player />
-      <audio ref={audioRef} src={track.file} preload='auto'></audio>
+      </> : null
+      }
+      <audio ref={audioRef} src={track ? track.song_url : ' '} preload='auto'></audio>
     </div>
   )
 }

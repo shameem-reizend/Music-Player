@@ -1,5 +1,8 @@
  
 import { DataSource } from 'typeorm';
+import { Song } from '../model/Song';
+import { Album } from '../model/Album';
+
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +13,7 @@ export const AppDataSource = new DataSource({
   database: 'music_db',
   synchronize: true,
   logging: false,
-  entities: [],
+  entities: [Song, Album],
   migrations: ['src/migrations/*.ts'],
   subscribers: [],
 });
